@@ -1,4 +1,8 @@
 fastapi==0.128.0
-httpx==0.28.1
 uvicorn==0.40.0
 SQLAlchemy==2.0.45
+starlette==0.50.0
+pydantic==2.12.5
+starlette==0.50.0
+dotenv
+openai
