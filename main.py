@@ -4,7 +4,11 @@ import tableModel
 from database import engine
 from routers import talkToMandoAI
 from contextlib import asynccontextmanager
-import httpx
+from dotenv import load_dotenv
+from openai import AsyncOpenAI
+import os
+
+api_key = os.getenv("OPENAI_API_KEY")
 
 origins = [
     "http://localhost:4200",  # Angular
@@ -13,14 +17,14 @@ origins = [
     "https://yourdomain.com",  # production
 ]
 
+load_dotenv()
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    app.state.http = httpx.AsyncClient(timeout=httpx.Timeout(60.0))
-    try:
-        yield
-    finally:
-        await app.state.http.aclose()
+    app.state.openai = AsyncOpenAI(api_key=api_key)
+    yield
+    await app.state.openai.close()
 
 
 app = FastAPI(lifespan=lifespan)
