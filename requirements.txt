@@ -4,5 +4,6 @@ SQLAlchemy==2.0.45
 starlette==0.50.0
 pydantic==2.12.5
 starlette==0.50.0
-dotenv
-openai
+httpx==0.28.1
+dotenv==0.9.9
+openai==2.24.0

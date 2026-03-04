@@ -1,5 +1,8 @@
 import os
 from typing import Annotated, Optional, Any
+
+import httpx
+
 from database import SessionLocal
 from sqlalchemy.orm import Session
 from fastapi import APIRouter, Depends, HTTPException, Request
